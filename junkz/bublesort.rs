@@ -9,7 +9,7 @@ fn main() {
     println!("{:?}", vec);
 }
 
-fn bublesort<T: std::fmt::Debug + std::cmp::PartialOrd>(data: &mut [T]) {
+fn bublesort<T: std::fmt::Debug + PartialOrd>(data: &mut [T]) {
     let len = data.len();
     for _ in 0..len {
         for i in 0..len - 1 {
