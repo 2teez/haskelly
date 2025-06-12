@@ -1,5 +1,6 @@
 -- practicing function - recurrsion in haskell
---
+module Main where
+
 maximum' :: (Ord a) => [a] -> a
 maximum' [] = error "can't find maximum of an empty list."
 maximum' [x] = x
@@ -46,3 +47,6 @@ quicksort (x : xs) =
   let leftList = [a | a <- xs, x > a]
       rightList = [a | a <- xs, x <= a]
    in quicksort leftList ++ [x] ++ quicksort rightList
+
+main :: IO ()
+main = putStrLn "Hello, World!"
