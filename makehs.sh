@@ -77,6 +77,10 @@ while getopts "${optstring}" opt; do
             filename="${OPTARG}"
             write_to_file "${filename}" "generic"
         ;;
+        S)
+            filename="${OPTARG}"
+            runhaskell "${filename}" # run a haskell script
+        ;;
         s)
             filename="${OPTARG}"
             write_to_file "${filename}" "simple"
