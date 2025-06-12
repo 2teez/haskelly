@@ -53,6 +53,7 @@ function filename_check() {
 function help() {
     echo "${0} <option> <filename>"
     echo "Options avaliable:"
+    echo "-c    compile and run the haskell program."
     echo "-g    create a generic haskell program."
     echo "-h    display a help message."
     echo "-s    create a simple haskell script."
@@ -62,10 +63,16 @@ function help() {
 
 [[ "${#}" -ne 2 ]] && help
 
-optstring="s:S:g:h"
+optstring="c:s:S:g:h"
 
 while getopts "${optstring}" opt; do
     case "$opt" in
+        c)
+            filename="${OPTARG}"
+            raw_file="${filename%.*}"
+            ghc "${filename}" && ./"${raw_file}"
+            rm "${raw_file}" "${raw_file}.o" "${raw_file}.hi"
+        ;;
         g)
             filename="${OPTARG}"
             write_to_file "${filename}" "generic"
