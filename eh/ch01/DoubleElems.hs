@@ -14,7 +14,7 @@ map' fn ls
   | null ls = []
 map' fn (x : xs) = fn x : map' fn xs
 
--- filter' :: (t -> a) -> [t] -> [a]
+-- filter' :: (t -> Bool) -> [a] -> [a]
 filter' fn ls
   | null ls = []
 filter' fn (x : xs)
