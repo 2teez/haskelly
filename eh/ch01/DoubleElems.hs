@@ -15,10 +15,9 @@ map' fn ls
 map' fn (x : xs) = fn x : map' fn xs
 
 -- filter' :: (t -> Bool) -> [a] -> [a]
-filter' fn ls
-  | null ls = []
+filter' _ [] = []
 filter' fn (x : xs)
-  | not $ fn x = filter' fn xs
-  | otherwise = x : filter' fn xs
+  | fn x = x : filter' fn xs
+  | otherwise = filter' fn xs
 
 main = print $ doubleElems [1 .. 5]
