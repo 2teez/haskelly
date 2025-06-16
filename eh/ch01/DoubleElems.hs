@@ -14,10 +14,15 @@ map' fn ls
   | null ls = []
 map' fn (x : xs) = fn x : map' fn xs
 
--- filter' :: (t -> Bool) -> [a] -> [a]
+filter' :: (a -> Bool) -> [a] -> [a]
 filter' _ [] = []
 filter' fn (x : xs)
   | fn x = x : filter' fn xs
   | otherwise = filter' fn xs
+
+sip [] [] = []
+sip _ [] = []
+sip [] _ = []
+sip (x : xs) (h : hs) = (x, h) : sip xs hs
 
 main = print $ doubleElems [1 .. 5]
