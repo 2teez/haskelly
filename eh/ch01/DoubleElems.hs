@@ -28,17 +28,17 @@ sip (x : xs) (h : hs) = (x, h) : sip xs hs
 
 sumUp :: (Num a) => a -> [a] -> a
 sumUp initial ls
-  | null ls = 0
-  | otherwise = initial + head ls + sumUp initial (tail ls)
+  | null ls = initial
+  | otherwise = sumUp (initial + head ls) (tail ls)
 
 sumUp' :: (Num t) => t -> [t] -> t
-sumUp' _ [] = 0
-sumUp' i (x : xs) = i + x + sumUp' i xs
+sumUp' i [] = i
+sumUp' i (x : xs) = sumUp' (i + x) xs
 
 summe :: (Num t) => [t] -> t
 summe (x : xs) = sumi 0 (x : xs)
   where
-    sumi _ [] = 0
-    sumi i (x : xs) = i + x + sumi i xs
+    sumi i [] = i
+    sumi i (x : xs) = sumi (i + x) xs
 
-main = print $ doubleElems [1 .. 5]
+main = print $ summe [1 .. 1000]
