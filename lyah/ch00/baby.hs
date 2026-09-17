@@ -16,3 +16,6 @@ length' xs = sum [1 | _ <- xs]
 len :: [a] -> Int
 len [] = 0
 len (_:xs) = 1 + len xs
+
+rightAngleTriangles :: [(Int, Int, Int)]
+rightAngleTriangles = [(a, b, c) | a <- [1..10], b <- [1..10], c <- [1..10], a^2 + b^2 == c^2]
