@@ -58,12 +58,13 @@ function help() {
     echo "-h    display a help message."
     echo "-s    create a simple haskell script."
     echo "-S    run a haskell program as a script."
+    echo "-i    run ghc interative in a directory"
     exit 1
 }
 
 [[ "${#}" -ne 2 ]] && help
 
-optstring="c:s:S:g:h"
+optstring="c:s:S:g:i:h"
 
 while getopts "${optstring}" opt; do
     case "$opt" in
@@ -87,6 +88,10 @@ while getopts "${optstring}" opt; do
         ;;
         h)
             help
+        ;;
+        i)
+            dir="${OPTARG}"
+            ghci "${dir}"
         ;;
         *)
            echo "${opt}" "Not a valid avaliable option"
