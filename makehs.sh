@@ -91,7 +91,10 @@ while getopts "${optstring}" opt; do
         ;;
         i)
             dir="${OPTARG}"
-            ghci "${dir}"
+            cd "${dir}" || exit 1
+            touch mainer.hs  # create a temporary file to run ghci
+            ghci mainer.hs   # run ghci in the directory
+            rm mainer.hs     # remove the temporary file
         ;;
         *)
            echo "${opt}" "Not a valid avaliable option"
