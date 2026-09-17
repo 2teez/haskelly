@@ -12,27 +12,23 @@ function write_to_file() {
     filename="${1}"
     filename_check "${filename}"
     marker="${2}" # should be either simple or generic
-    if [[ "${marker}" == "simple" ]] then
-        echo "
-        module Main where
-        main = print \"Hello, World!\"
-        " > "${filename}"
+    if [[ "${marker}" == "simple" ]]; then
+        echo "module Main where
+main = print \"Hello, World!\"" > "${filename}"
     else
-        echo "
-        {-# LANGUAGE TypeApplications #-}
-        {-# LANGUAGE DerivingStrategies #-}
-        {-# LANGUAGE OverloadedStrings #-}
-        module Main where
+        echo "{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE DerivingStrategies #-}
+{-# LANGUAGE OverloadedStrings #-}
+module Main where
 
-        import Data.ByteString (ByteString)
-        import Data.Text (Text)
+import Data.ByteString (ByteString)
+import Data.Text (Text)
 
-        helloWorld :: ByteString
-        helloWorld = \"Hello, World\"
+helloWorld :: ByteString
+helloWorld = \"Hello, World\"
 
-        main :: IO ()
-        main = print helloWorld
-        " > "${filename}"
+main :: IO ()
+main = print helloWorld" > "${filename}"
     fi
 }
 # make a file
