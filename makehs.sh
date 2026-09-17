@@ -50,6 +50,7 @@ function help() {
     echo "${0} <option> <filename>"
     echo "Options avaliable:"
     echo "-c    compile and run the haskell program."
+    echo "-d    delete the haskell program."
     echo "-g    create a generic haskell program."
     echo "-h    display a help message."
     echo "-s    create a simple haskell script."
@@ -60,7 +61,7 @@ function help() {
 
 [[ "${#}" -ne 2 ]] && help
 
-optstring="c:s:S:g:i:h"
+optstring="c:d:s:S:g:i:h"
 
 while getopts "${optstring}" opt; do
     case "$opt" in
@@ -81,6 +82,10 @@ while getopts "${optstring}" opt; do
         s)
             filename="${OPTARG}"
             write_to_file "${filename}" "simple"
+        ;;
+        d)
+            filename="${OPTARG}"
+            rm "${filename}"
         ;;
         h)
             help
