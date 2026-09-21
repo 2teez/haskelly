@@ -13,10 +13,12 @@ function write_to_file() {
     filename_check "${filename}"
     marker="${2}" # should be either simple or generic
     if [[ "${marker}" == "simple" ]]; then
-        echo "module Main where
+        echo " -- file: ${filename}
+module Main where
 main = print \"Hello, World!\"" > "${filename}"
     else
-        echo "{-# LANGUAGE TypeApplications #-}
+        echo " -- file: ${filename}
+{-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
