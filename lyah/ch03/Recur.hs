@@ -32,7 +32,7 @@ maximum' [] = error "Can't find maximum of empty list"
 maximum' [x] = x
 maximum' (x:xs) = max x (maximum' xs)
 
--- replicate 
+-- replicate
 replicate' :: Int -> a -> [a]
 replicate' x n
     | x <= 0 = []
@@ -44,8 +44,8 @@ take' :: Int -> [a] -> [a]
 take' n lst
     | n == 0 = []
     | n > len = lst
-    | otherwise = h : take' (n - 1) t 
-        where len = (length lst) 
+    | otherwise = h : take' (n - 1) t
+        where len = (length lst)
               (h, t) = (head lst, tail lst)
 
 
@@ -53,3 +53,8 @@ take' n lst
 reverse' :: [a] -> [a]
 reverse' [] = []
 reverse' (x:xs) = reverse' xs ++ [x]
+
+-- quicksort
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) = quicksort [y | y <- xs, y <= x] ++ [x] ++ quicksort [y | y <- xs, y > x]
