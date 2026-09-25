@@ -1,4 +1,5 @@
 import 'bookstore.dart';
+import 'customer.dart';
 
 void main() {
   final book = Book(
@@ -8,4 +9,12 @@ void main() {
   );
 
   print(book);
+
+  final customer = Customer(
+    customerId: 23678,
+    name: "J.R. Hacker",
+    address: ["255 Syntax Ct", "Milpitas, CA 95134", "USA"],
+  );
+
+  print(customer);
 }
